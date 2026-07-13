@@ -15,7 +15,7 @@
   --soft:#fff1f5;
   --cream:#fff9fa;
   --line:rgba(207,113,141,.24);
-  --panel:rgba(255,255,255,.78);
+  --panel:rgba(255,255,255,.79);
 }
 
 *{
@@ -24,13 +24,24 @@
   box-sizing:border-box;
 }
 
+html,
+body{
+  min-height:100%;
+}
+
 body{
   min-height:100vh;
   padding:16px;
   color:var(--brown);
   font-family:Arial,sans-serif;
+
   background:
-    radial-gradient(circle at top left,#fffafa 0,#ffedf2 46%,#fbe2e9 100%);
+    linear-gradient(
+      rgba(255,244,248,.38),
+      rgba(255,236,242,.48)
+    ),
+    url("daily-faith-background.png.png")
+    center center / cover no-repeat fixed;
 }
 
 button,
@@ -44,11 +55,17 @@ textarea{
   max-width:1540px;
   margin:auto;
   padding:22px;
+
   border:1px solid rgba(255,255,255,.88);
   border-radius:25px;
-  background:rgba(255,249,250,.82);
-  box-shadow:0 14px 42px rgba(139,75,96,.16);
+
+  background:rgba(255,249,250,.78);
+
+  box-shadow:
+    0 14px 42px rgba(139,75,96,.18);
+
   backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
 }
 
 .top{
@@ -85,7 +102,6 @@ h1{
 
 .heart{
   color:var(--pink);
-  font-weight:400;
 }
 
 .tagline{
@@ -116,12 +132,16 @@ h1{
 
 .overall-ring{
   --value:0;
+
   width:150px;
   height:150px;
+
   display:grid;
   place-items:center;
+
   position:relative;
   border-radius:50%;
+
   background:
     conic-gradient(
       var(--pink) calc(var(--value) * 1%),
@@ -184,7 +204,7 @@ h1{
   padding:17px;
   border-radius:14px;
   text-align:center;
-  background:#fff0f4;
+  background:rgba(255,240,244,.88);
 }
 
 .vision-title{
@@ -211,9 +231,11 @@ h1{
 .table-wrap{
   width:100%;
   overflow-x:auto;
+
   border:1px solid var(--line);
   border-radius:17px;
-  background:rgba(255,255,255,.56);
+
+  background:rgba(255,255,255,.62);
 }
 
 table{
@@ -243,7 +265,7 @@ th{
   color:#50363d;
   font-size:13px;
   letter-spacing:1.5px;
-  background:rgba(255,237,242,.72);
+  background:rgba(255,237,242,.82);
 }
 
 th:first-child{
@@ -273,11 +295,14 @@ th:last-child{
 .goal-icon{
   width:48px;
   height:48px;
+
   display:grid;
   place-items:center;
+
   flex:0 0 auto;
   border-radius:50%;
   font-size:25px;
+
   background:#ffe8ef;
 }
 
@@ -321,15 +346,22 @@ th:last-child{
 .day-check{
   width:23px;
   height:23px;
+
   display:grid;
   place-items:center;
   justify-self:center;
+
   border:1.5px solid #dc8ca3;
   border-radius:50%;
+
   color:white;
   background:#fff;
   cursor:pointer;
-  transition:.18s ease;
+
+  transition:
+    transform .18s ease,
+    background .18s ease,
+    box-shadow .18s ease;
 }
 
 .day-check:hover{
@@ -339,6 +371,7 @@ th:last-child{
 .day-check.done{
   border-color:var(--pink);
   background:var(--pink);
+  box-shadow:0 0 8px rgba(230,111,145,.35);
 }
 
 .day-check.done::after{
@@ -393,6 +426,12 @@ th:last-child{
   outline:0;
 }
 
+.number-entry input:focus,
+textarea:focus{
+  border-color:var(--rose);
+  box-shadow:0 0 0 3px rgba(243,154,178,.14);
+}
+
 .number-entry span{
   color:#a56677;
   font-size:11px;
@@ -402,8 +441,10 @@ th:last-child{
   width:100%;
   margin-top:10px;
   padding:8px;
+
   border:1px solid var(--line);
   border-radius:999px;
+
   color:#a45c72;
   background:#fff5f8;
   cursor:pointer;
@@ -424,11 +465,15 @@ th:last-child{
 .month-check{
   width:34px;
   height:34px;
+
   display:grid;
   place-items:center;
+
   margin:0 auto 8px;
+
   border:1.5px solid #d994a8;
   border-radius:50%;
+
   color:#fff;
   background:#fff;
 }
@@ -517,7 +562,11 @@ th:last-child{
 }
 
 .legend-circle.progress{
-  background:linear-gradient(90deg,var(--pink) 50%,#fff 50%);
+  background:linear-gradient(
+    90deg,
+    var(--pink) 50%,
+    #fff 50%
+  );
 }
 
 .final-note{
@@ -529,7 +578,7 @@ th:last-child{
   font-family:Georgia,serif;
   font-style:italic;
   line-height:1.6;
-  background:#fff0f4;
+  background:rgba(255,240,244,.9);
 }
 
 .actions{
@@ -540,8 +589,10 @@ th:last-child{
 
 .reset-button{
   padding:10px 17px;
+
   border:1px solid rgba(173,78,105,.32);
   border-radius:999px;
+
   color:#ad526b;
   background:#fff4f7;
   cursor:pointer;
@@ -611,7 +662,11 @@ th:last-child{
   <section class="top">
 
     <div class="title-area">
-      <h1>JULY SCORE CARD <span class="heart">♡</span></h1>
+
+      <h1>
+        JULY SCORE CARD
+        <span class="heart">♡</span>
+      </h1>
 
       <div class="tagline">
         FOCUS · DISCIPLINE · CONSISTENCY · FREEDOM
@@ -620,101 +675,146 @@ th:last-child{
       <div class="quote-card">
         “Discipline today, freedom tomorrow. ♡”
       </div>
+
     </div>
 
     <div class="overall-card">
 
       <div class="overall-ring" id="overallRing">
         <div class="ring-content">
-          <span class="ring-number" id="overallPercent">0%</span>
-          <span class="ring-label">COMPLETE</span>
+          <span class="ring-number" id="overallPercent">
+            0%
+          </span>
+
+          <span class="ring-label">
+            COMPLETE
+          </span>
         </div>
       </div>
 
       <div class="overall-details">
+
         <h2>OVERALL JULY GOALS</h2>
 
         <div class="stat-line">
           <small>Goals completed</small>
-          <strong id="goalsComplete">0 / 5</strong>
+          <strong id="goalsComplete">
+            0 / 5
+          </strong>
         </div>
 
         <div class="stat-line">
           <small>Overall progress</small>
-          <strong id="overallText">0%</strong>
+          <strong id="overallText">
+            0%
+          </strong>
         </div>
+
       </div>
 
       <div class="vision">
-        <div class="vision-title">MONTHLY VISION</div>
+
+        <div class="vision-title">
+          MONTHLY VISION
+        </div>
+
         <textarea id="monthlyVision">The habits I build this month will change my whole life. ♡</textarea>
+
       </div>
 
     </div>
+
   </section>
 
   <div class="table-wrap">
+
     <table>
+
       <thead>
         <tr>
+
           <th>HABITS &amp; GOALS</th>
 
           <th>
             WEEK 1
-            <span class="week-date">JUN 30 – JUL 6</span>
+            <span class="week-date">
+              JUN 30 – JUL 6
+            </span>
           </th>
 
           <th>
             WEEK 2
-            <span class="week-date">JUL 7 – JUL 13</span>
+            <span class="week-date">
+              JUL 7 – JUL 13
+            </span>
           </th>
 
           <th>
             WEEK 3
-            <span class="week-date">JUL 14 – JUL 20</span>
+            <span class="week-date">
+              JUL 14 – JUL 20
+            </span>
           </th>
 
           <th>
             WEEK 4
-            <span class="week-date">JUL 21 – JUL 27</span>
+            <span class="week-date">
+              JUL 21 – JUL 27
+            </span>
           </th>
 
           <th>
             WEEK 5
-            <span class="week-date">JUL 28 – JUL 31</span>
+            <span class="week-date">
+              JUL 28 – JUL 31
+            </span>
           </th>
 
           <th>JULY GOAL</th>
+
         </tr>
       </thead>
 
       <tbody id="goalRows"></tbody>
+
     </table>
+
   </div>
 
   <section class="bottom">
 
     <div class="reminders">
-      <div class="bottom-title">JULY REMINDERS</div>
+
+      <div class="bottom-title">
+        JULY REMINDERS
+      </div>
 
       <ul>
         <li>Progress, not perfection.</li>
         <li>Small daily choices create big changes.</li>
         <li>Keep showing up for yourself.</li>
       </ul>
+
     </div>
 
     <div class="week-reflection">
-      <div class="bottom-title">WEEKLY REFLECTION</div>
+
+      <div class="bottom-title">
+        WEEKLY REFLECTION
+      </div>
 
       <textarea
         id="weeklyReflection"
         placeholder="This week, I’m proud of..."
       ></textarea>
+
     </div>
 
     <div class="legend">
-      <div class="bottom-title">LEGEND</div>
+
+      <div class="bottom-title">
+        LEGEND
+      </div>
 
       <div class="legend-item">
         <span class="legend-circle complete"></span>
@@ -730,6 +830,7 @@ th:last-child{
         <span class="legend-circle"></span>
         Not started
       </div>
+
     </div>
 
     <div class="final-note">
@@ -739,19 +840,24 @@ th:last-child{
   </section>
 
   <div class="actions">
-    <button class="reset-button" id="resetScorecard">
+
+    <button
+      class="reset-button"
+      id="resetScorecard"
+    >
       Reset July Scorecard
     </button>
+
   </div>
 
   <div class="saved-note">
-    🔒 Your July progress saves automatically and remains after refreshing.
+    🔒 Your July progress saves automatically and stays after refreshing.
   </div>
 
 </div>
 
 <script>
-const STORAGE_KEY = "kim-july-scorecard-v1";
+const STORAGE_KEY = "kim-july-scorecard-background-v2";
 
 const WEEK_DAYS = [
   ["M","T","W","T","F","S","S"],
@@ -808,12 +914,12 @@ const GOALS = [
   }
 ];
 
-function emptyState(){
+function createEmptyState(){
   const goals = {};
 
   GOALS.forEach(goal=>{
     goals[goal.id] = {
-      weeks: WEEK_DAYS.map(days=>{
+      weeks:WEEK_DAYS.map(days=>{
         if(goal.type === "days"){
           return {
             checks:days.map(()=>false)
@@ -834,39 +940,59 @@ function emptyState(){
   });
 
   return {
-    vision:"The habits I build this month will change my whole life. ♡",
+    vision:
+      "The habits I build this month will change my whole life. ♡",
+
     reflection:"",
+
     goals
   };
 }
 
-let state = emptyState();
+let state = createEmptyState();
+
+function numberValue(value){
+  const number = Number(value);
+  return Number.isFinite(number) ? number : 0;
+}
 
 function render(){
   const tbody = document.getElementById("goalRows");
+
   tbody.innerHTML = "";
 
   GOALS.forEach(goal=>{
+
     const row = document.createElement("tr");
 
-    const goalTd = document.createElement("td");
-    goalTd.innerHTML = `
+    const goalCell = document.createElement("td");
+
+    goalCell.innerHTML = `
       <div class="goal-cell">
-        <div class="goal-icon">${goal.icon}</div>
+
+        <div class="goal-icon">
+          ${goal.icon}
+        </div>
 
         <div>
-          <div class="goal-name">${goal.name}</div>
-          <span class="goal-note">${goal.note}</span>
+          <div class="goal-name">
+            ${goal.name}
+          </div>
+
+          <span class="goal-note">
+            ${goal.note}
+          </span>
         </div>
+
       </div>
     `;
 
-    row.appendChild(goalTd);
-
-    goal.weeks = state.goals[goal.id].weeks;
+    row.appendChild(goalCell);
 
     WEEK_DAYS.forEach((days,weekIndex)=>{
+
       const td = document.createElement("td");
+
       td.className = "week-cell";
 
       if(goal.type === "days"){
@@ -890,11 +1016,13 @@ function render(){
       row.appendChild(td);
     });
 
-    const monthTd = document.createElement("td");
-    monthTd.className = "month-cell";
-    monthTd.id = `month-${goal.id}`;
+    const monthCell = document.createElement("td");
 
-    row.appendChild(monthTd);
+    monthCell.className = "month-cell";
+    monthCell.id = "month-" + goal.id;
+
+    row.appendChild(monthCell);
+
     tbody.appendChild(row);
   });
 
@@ -903,7 +1031,9 @@ function render(){
 
 function renderDayWeek(goal,weekIndex,days){
   const container = document.createElement("div");
-  const week = state.goals[goal.id].weeks[weekIndex];
+
+  const week =
+    state.goals[goal.id].weeks[weekIndex];
 
   container.innerHTML = `
     <div class="day-labels">
@@ -913,24 +1043,38 @@ function renderDayWeek(goal,weekIndex,days){
     <div class="week-days"></div>
 
     <div class="week-progress">
+
       <div class="week-progress-row">
-        <span id="${goal.id}-${weekIndex}-text">0%</span>
-        <span id="${goal.id}-${weekIndex}-count">0 / ${days.length}</span>
+
+        <span id="${goal.id}-${weekIndex}-text">
+          0%
+        </span>
+
+        <span id="${goal.id}-${weekIndex}-count">
+          0 / ${days.length}
+        </span>
+
       </div>
 
       <div class="progress-track">
+
         <div
           class="progress-fill"
           id="${goal.id}-${weekIndex}-fill"
         ></div>
+
       </div>
+
     </div>
   `;
 
-  const checks = container.querySelector(".week-days");
+  const checksContainer =
+    container.querySelector(".week-days");
 
   days.forEach((day,index)=>{
+
     const button = document.createElement("button");
+
     button.type = "button";
     button.className = "day-check";
 
@@ -939,14 +1083,20 @@ function renderDayWeek(goal,weekIndex,days){
     }
 
     button.addEventListener("click",()=>{
-      week.checks[index] = !week.checks[index];
-      button.classList.toggle("done",week.checks[index]);
+
+      week.checks[index] =
+        !week.checks[index];
+
+      button.classList.toggle(
+        "done",
+        week.checks[index]
+      );
 
       updateAllProgress();
-      save();
+      saveState();
     });
 
-    checks.appendChild(button);
+    checksContainer.appendChild(button);
   });
 
   return container;
@@ -954,15 +1104,23 @@ function renderDayWeek(goal,weekIndex,days){
 
 function renderNumberWeek(goal,weekIndex){
   const container = document.createElement("div");
-  const week = state.goals[goal.id].weeks[weekIndex];
 
-  const symbol =
+  const week =
+    state.goals[goal.id].weeks[weekIndex];
+
+  const prefix =
     goal.unit === "dollars"
       ? "$"
       : "";
 
+  const suffix =
+    goal.unit === "hours"
+      ? " hrs"
+      : "";
+
   container.innerHTML = `
     <div class="number-entry">
+
       <input
         type="number"
         min="0"
@@ -972,37 +1130,46 @@ function renderNumberWeek(goal,weekIndex){
       >
 
       <span>
-        ${symbol}${goal.weeklyTarget}
-        ${goal.unit === "hours" ? "hrs" : "goal"}
+        ${prefix}${goal.weeklyTarget}${suffix}
       </span>
+
     </div>
 
     <div class="week-progress">
+
       <div class="week-progress-row">
-        <span id="${goal.id}-${weekIndex}-text">0%</span>
+
+        <span id="${goal.id}-${weekIndex}-text">
+          0%
+        </span>
 
         <span>
-          Weekly target:
-          ${symbol}${goal.weeklyTarget}
+          Weekly target
         </span>
+
       </div>
 
       <div class="progress-track">
+
         <div
           class="progress-fill"
           id="${goal.id}-${weekIndex}-fill"
         ></div>
+
       </div>
+
     </div>
   `;
 
-  const input = container.querySelector("input");
+  const input =
+    container.querySelector("input");
 
   input.addEventListener("input",()=>{
+
     week.value = input.value;
 
     updateAllProgress();
-    save();
+    saveState();
   });
 
   return container;
@@ -1010,18 +1177,26 @@ function renderNumberWeek(goal,weekIndex){
 
 function renderWeeklyCheck(goal,weekIndex){
   const container = document.createElement("div");
-  const week = state.goals[goal.id].weeks[weekIndex];
+
+  const week =
+    state.goals[goal.id].weeks[weekIndex];
 
   container.innerHTML = `
     <button
       type="button"
       class="week-complete ${week.completed ? "active" : ""}"
     >
-      ${week.completed ? "✓ Week Complete" : "Check Off Week"}
+      ${
+        week.completed
+          ? "✓ Week Complete"
+          : "Check Off Week"
+      }
     </button>
 
     <div class="week-progress">
+
       <div class="week-progress-row">
+
         <span id="${goal.id}-${weekIndex}-text">
           ${week.completed ? "100%" : "0%"}
         </span>
@@ -1029,24 +1204,33 @@ function renderWeeklyCheck(goal,weekIndex){
         <span>
           ${week.completed ? "Completed" : "Not completed"}
         </span>
+
       </div>
 
       <div class="progress-track">
+
         <div
           class="progress-fill"
           id="${goal.id}-${weekIndex}-fill"
           style="width:${week.completed ? 100 : 0}%"
         ></div>
+
       </div>
+
     </div>
   `;
 
-  const button = container.querySelector(".week-complete");
+  const button =
+    container.querySelector(".week-complete");
 
   button.addEventListener("click",()=>{
+
     week.completed = !week.completed;
 
-    button.classList.toggle("active",week.completed);
+    button.classList.toggle(
+      "active",
+      week.completed
+    );
 
     button.textContent =
       week.completed
@@ -1054,61 +1238,80 @@ function renderWeeklyCheck(goal,weekIndex){
         : "Check Off Week";
 
     updateAllProgress();
-    save();
+    saveState();
   });
 
   return container;
 }
 
-function numberValue(value){
-  const number = Number(value);
-  return Number.isFinite(number) ? number : 0;
-}
+function calculateGoalProgress(goal){
 
-function goalProgress(goal){
   if(goal.type === "days"){
+
     const completed =
       state.goals[goal.id].weeks
         .flatMap(week=>week.checks)
         .filter(Boolean)
         .length;
 
+    const percent = Math.min(
+      Math.round(
+        (completed / goal.monthlyTarget) * 100
+      ),
+      100
+    );
+
     return {
       completed,
-      target:goal.monthlyTarget,
-      percent:Math.min(
-        Math.round((completed / goal.monthlyTarget) * 100),
-        100
-      ),
-      label:`${completed} / ${goal.monthlyTarget} DAYS`
+      percent,
+      label:
+        completed +
+        " / " +
+        goal.monthlyTarget +
+        " DAYS"
     };
   }
 
   if(goal.type === "weekly"){
+
     const completed =
       state.goals[goal.id].weeks
         .filter(week=>week.completed)
         .length;
 
+    const percent = Math.min(
+      Math.round(
+        (completed / goal.monthlyTarget) * 100
+      ),
+      100
+    );
+
     return {
       completed,
-      target:goal.monthlyTarget,
-      percent:Math.min(
-        Math.round((completed / goal.monthlyTarget) * 100),
-        100
-      ),
+      percent,
       label:
         completed === goal.monthlyTarget
           ? "COMPLETE"
-          : `${completed} / ${goal.monthlyTarget} WEEKS`
+          : completed +
+            " / " +
+            goal.monthlyTarget +
+            " WEEKS"
     };
   }
 
   const completed =
     state.goals[goal.id].weeks.reduce(
-      (sum,week)=>sum + numberValue(week.value),
+      (sum,week)=>
+        sum + numberValue(week.value),
       0
     );
+
+  const percent = Math.min(
+    Math.round(
+      (completed / goal.monthlyTarget) * 100
+    ),
+    100
+  );
 
   const prefix =
     goal.unit === "dollars"
@@ -1122,94 +1325,114 @@ function goalProgress(goal){
 
   return {
     completed,
-    target:goal.monthlyTarget,
-    percent:Math.min(
-      Math.round((completed / goal.monthlyTarget) * 100),
-      100
-    ),
+    percent,
     label:
-      `${prefix}${completed} / ` +
-      `${prefix}${goal.monthlyTarget}${suffix}`
+      prefix +
+      completed +
+      " / " +
+      prefix +
+      goal.monthlyTarget +
+      suffix
   };
 }
 
 function updateAllProgress(){
-  let totalPercent = 0;
+  let combinedPercent = 0;
   let completedGoals = 0;
 
   GOALS.forEach(goal=>{
-    state.goals[goal.id].weeks.forEach((week,weekIndex)=>{
-      let percent = 0;
-      let countText = "";
 
-      if(goal.type === "days"){
-        const complete = week.checks.filter(Boolean).length;
-        const target = week.checks.length;
+    state.goals[goal.id].weeks.forEach(
+      (week,weekIndex)=>{
 
-        percent = target
-          ? Math.round((complete / target) * 100)
-          : 0;
+        let percent = 0;
 
-        countText = `${complete} / ${target}`;
+        if(goal.type === "days"){
 
-        const countElement =
+          const completed =
+            week.checks.filter(Boolean).length;
+
+          const total =
+            week.checks.length;
+
+          percent = total
+            ? Math.round(
+                (completed / total) * 100
+              )
+            : 0;
+
+          const countElement =
+            document.getElementById(
+              `${goal.id}-${weekIndex}-count`
+            );
+
+          if(countElement){
+            countElement.textContent =
+              completed + " / " + total;
+          }
+        }
+
+        if(goal.type === "number"){
+
+          percent = Math.min(
+            Math.round(
+              (
+                numberValue(week.value) /
+                goal.weeklyTarget
+              ) * 100
+            ),
+            100
+          );
+        }
+
+        if(goal.type === "weekly"){
+          percent =
+            week.completed
+              ? 100
+              : 0;
+        }
+
+        const textElement =
           document.getElementById(
-            `${goal.id}-${weekIndex}-count`
+            `${goal.id}-${weekIndex}-text`
           );
 
-        if(countElement){
-          countElement.textContent = countText;
+        const fillElement =
+          document.getElementById(
+            `${goal.id}-${weekIndex}-fill`
+          );
+
+        if(textElement){
+          textElement.textContent =
+            percent + "%";
+        }
+
+        if(fillElement){
+          fillElement.style.width =
+            percent + "%";
         }
       }
+    );
 
-      if(goal.type === "number"){
-        percent = Math.min(
-          Math.round(
-            (
-              numberValue(week.value) /
-              goal.weeklyTarget
-            ) * 100
-          ),
-          100
-        );
-      }
+    const month =
+      calculateGoalProgress(goal);
 
-      if(goal.type === "weekly"){
-        percent = week.completed ? 100 : 0;
-      }
-
-      const text =
-        document.getElementById(
-          `${goal.id}-${weekIndex}-text`
-        );
-
-      const fill =
-        document.getElementById(
-          `${goal.id}-${weekIndex}-fill`
-        );
-
-      if(text){
-        text.textContent = percent + "%";
-      }
-
-      if(fill){
-        fill.style.width = percent + "%";
-      }
-    });
-
-    const month = goalProgress(goal);
-
-    totalPercent += month.percent;
+    combinedPercent += month.percent;
 
     if(month.percent >= 100){
       completedGoals++;
     }
 
     const monthCell =
-      document.getElementById(`month-${goal.id}`);
+      document.getElementById(
+        "month-" + goal.id
+      );
 
     monthCell.innerHTML = `
-      <div class="month-check ${month.percent >= 100 ? "done" : ""}"></div>
+      <div
+        class="month-check
+        ${month.percent >= 100 ? "done" : ""}"
+      ></div>
 
       <div class="month-result">
         ${month.label}
@@ -1221,30 +1444,42 @@ function updateAllProgress(){
     `;
   });
 
-  const overall =
-    Math.round(totalPercent / GOALS.length);
+  const overall = Math.round(
+    combinedPercent / GOALS.length
+  );
 
-  document.getElementById("overallPercent")
+  document
+    .getElementById("overallPercent")
     .textContent = overall + "%";
 
-  document.getElementById("overallText")
+  document
+    .getElementById("overallText")
     .textContent = overall + "%";
 
-  document.getElementById("goalsComplete")
+  document
+    .getElementById("goalsComplete")
     .textContent =
-      completedGoals + " / " + GOALS.length;
+      completedGoals +
+      " / " +
+      GOALS.length;
 
-  document.getElementById("overallRing")
+  document
+    .getElementById("overallRing")
     .style
     .setProperty("--value",overall);
 }
 
-function save(){
+function saveState(){
+
   state.vision =
-    document.getElementById("monthlyVision").value;
+    document
+      .getElementById("monthlyVision")
+      .value;
 
   state.reflection =
-    document.getElementById("weeklyReflection").value;
+    document
+      .getElementById("weeklyReflection")
+      .value;
 
   localStorage.setItem(
     STORAGE_KEY,
@@ -1252,14 +1487,19 @@ function save(){
   );
 }
 
-function load(){
+function loadState(){
+
   const saved =
     localStorage.getItem(STORAGE_KEY);
 
   if(saved){
+
     try{
-      const parsed = JSON.parse(saved);
-      const fresh = emptyState();
+      const parsed =
+        JSON.parse(saved);
+
+      const fresh =
+        createEmptyState();
 
       state = {
         ...fresh,
@@ -1269,15 +1509,18 @@ function load(){
           ...(parsed.goals || {})
         }
       };
+
     }catch(error){
-      state = emptyState();
+      state = createEmptyState();
     }
   }
 
-  document.getElementById("monthlyVision")
+  document
+    .getElementById("monthlyVision")
     .value = state.vision || "";
 
-  document.getElementById("weeklyReflection")
+  document
+    .getElementById("weeklyReflection")
     .value = state.reflection || "";
 
   render();
@@ -1285,36 +1528,47 @@ function load(){
 
 document
   .getElementById("monthlyVision")
-  .addEventListener("input",save);
+  .addEventListener(
+    "input",
+    saveState
+  );
 
 document
   .getElementById("weeklyReflection")
-  .addEventListener("input",save);
+  .addEventListener(
+    "input",
+    saveState
+  );
 
 document
   .getElementById("resetScorecard")
   .addEventListener("click",()=>{
-    const confirmed = window.confirm(
-      "Delete all saved July Scorecard progress and start fresh?"
-    );
+
+    const confirmed =
+      window.confirm(
+        "Delete all July Scorecard progress and start fresh?"
+      );
 
     if(!confirmed){
       return;
     }
 
     localStorage.removeItem(STORAGE_KEY);
-    state = emptyState();
 
-    document.getElementById("monthlyVision")
+    state = createEmptyState();
+
+    document
+      .getElementById("monthlyVision")
       .value = state.vision;
 
-    document.getElementById("weeklyReflection")
+    document
+      .getElementById("weeklyReflection")
       .value = "";
 
     render();
   });
 
-load();
+loadState();
 </script>
 
 </body>
