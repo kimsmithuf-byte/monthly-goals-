@@ -1,119 +1,1321 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8" />
-<title>Monthly Goals</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>July Scorecard</title>
+
 <style>
-html, body {
-  margin: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  background: #120006;
-  font-family: Georgia, serif;
+:root{
+  --brown:#52383d;
+  --deep:#8c4b60;
+  --pink:#e66f91;
+  --rose:#f39ab2;
+  --soft:#fff1f5;
+  --cream:#fff9fa;
+  --line:rgba(207,113,141,.24);
+  --panel:rgba(255,255,255,.78);
 }
 
-body {
-  background-image: url("monthly-goals-background.png.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-.content {
-  position: absolute;
-  left: 52%;
-  top: 48%;
-  transform: translate(-50%, -50%);
-  width: 58%;
-  color: #fff1e6;
-  text-align: center;
+body{
+  min-height:100vh;
+  padding:16px;
+  color:var(--brown);
+  font-family:Arial,sans-serif;
+  background:
+    radial-gradient(circle at top left,#fffafa 0,#ffedf2 46%,#fbe2e9 100%);
 }
 
-.title {
-  color: #f4a6bd;
-  font-size: 44px;
-  font-weight: bold;
-  margin-bottom: 8px;
+button,
+input,
+textarea{
+  font:inherit;
 }
 
-.subtitle {
-  color: #f4a6bd;
-  font-size: 18px;
-  letter-spacing: 2px;
-  margin-bottom: 24px;
+.scorecard{
+  width:100%;
+  max-width:1540px;
+  margin:auto;
+  padding:22px;
+  border:1px solid rgba(255,255,255,.88);
+  border-radius:25px;
+  background:rgba(255,249,250,.82);
+  box-shadow:0 14px 42px rgba(139,75,96,.16);
+  backdrop-filter:blur(12px);
 }
 
-.goal-section {
-  text-align: left;
-  margin: 16px auto;
-  width: 82%;
+.top{
+  display:grid;
+  grid-template-columns:1.1fr 1fr;
+  gap:18px;
+  margin-bottom:18px;
 }
 
-.goal-section h2 {
-  color: #f4a6bd;
-  font-size: 24px;
-  margin-bottom: 8px;
+.title-area,
+.overall-card,
+.quote-card,
+.week-reflection,
+.reminders,
+.legend,
+.final-note{
+  border:1px solid var(--line);
+  border-radius:17px;
+  background:var(--panel);
 }
 
-.goal {
-  font-size: 20px;
-  line-height: 1.7;
+.title-area{
+  border:0;
+  background:transparent;
 }
 
-.progress-title {
-  color: #f4a6bd;
-  font-size: 22px;
-  margin-top: 26px;
-  margin-bottom: 12px;
+h1{
+  font-family:Georgia,serif;
+  font-size:58px;
+  font-weight:400;
+  line-height:1;
+  color:#4c3137;
 }
 
-.bar {
-  width: 82%;
-  height: 12px;
-  border: 1px solid #f4a6bd;
-  border-radius: 20px;
-  margin: 8px auto 16px;
-  overflow: hidden;
+.heart{
+  color:var(--pink);
+  font-weight:400;
 }
 
-.fill {
-  width: 35%;
-  height: 100%;
-  background: #f4a6bd;
-  box-shadow: 0 0 15px #f4a6bd;
+.tagline{
+  margin-top:12px;
+  color:var(--pink);
+  font-size:13px;
+  letter-spacing:4px;
+}
+
+.quote-card{
+  max-width:520px;
+  margin-top:25px;
+  padding:18px;
+  text-align:center;
+  color:#78545f;
+  font-family:Georgia,serif;
+  font-style:italic;
+  font-size:18px;
+}
+
+.overall-card{
+  display:grid;
+  grid-template-columns:180px 1fr 230px;
+  gap:20px;
+  align-items:center;
+  padding:20px;
+}
+
+.overall-ring{
+  --value:0;
+  width:150px;
+  height:150px;
+  display:grid;
+  place-items:center;
+  position:relative;
+  border-radius:50%;
+  background:
+    conic-gradient(
+      var(--pink) calc(var(--value) * 1%),
+      #f8dce4 0
+    );
+}
+
+.overall-ring::before{
+  content:"";
+  position:absolute;
+  width:118px;
+  height:118px;
+  border-radius:50%;
+  background:#fffafd;
+}
+
+.ring-content{
+  position:relative;
+  z-index:2;
+  text-align:center;
+}
+
+.ring-number{
+  display:block;
+  font-family:Georgia,serif;
+  font-size:42px;
+  color:#4c3137;
+}
+
+.ring-label{
+  font-size:11px;
+  letter-spacing:1px;
+}
+
+.overall-details h2{
+  margin-bottom:14px;
+  color:var(--pink);
+  font-size:15px;
+  letter-spacing:2px;
+}
+
+.stat-line{
+  margin:9px 0;
+  padding-bottom:9px;
+  border-bottom:1px solid var(--line);
+}
+
+.stat-line small{
+  display:block;
+  margin-bottom:3px;
+}
+
+.stat-line strong{
+  font-family:Georgia,serif;
+  font-size:24px;
+  font-weight:400;
+}
+
+.vision{
+  padding:17px;
+  border-radius:14px;
+  text-align:center;
+  background:#fff0f4;
+}
+
+.vision-title{
+  margin-bottom:12px;
+  color:var(--pink);
+  letter-spacing:2px;
+}
+
+.vision textarea{
+  width:100%;
+  min-height:90px;
+  padding:8px;
+  border:0;
+  resize:vertical;
+  outline:0;
+  text-align:center;
+  color:#74535b;
+  font-family:Georgia,serif;
+  font-style:italic;
+  line-height:1.5;
+  background:transparent;
+}
+
+.table-wrap{
+  width:100%;
+  overflow-x:auto;
+  border:1px solid var(--line);
+  border-radius:17px;
+  background:rgba(255,255,255,.56);
+}
+
+table{
+  width:100%;
+  min-width:1320px;
+  border-collapse:collapse;
+}
+
+th,
+td{
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+
+th:last-child,
+td:last-child{
+  border-right:0;
+}
+
+tr:last-child td{
+  border-bottom:0;
+}
+
+th{
+  min-width:185px;
+  padding:14px 10px;
+  color:#50363d;
+  font-size:13px;
+  letter-spacing:1.5px;
+  background:rgba(255,237,242,.72);
+}
+
+th:first-child{
+  min-width:260px;
+  text-align:left;
+}
+
+th:last-child{
+  min-width:170px;
+}
+
+.week-date{
+  display:block;
+  margin-top:6px;
+  font-size:11px;
+  font-weight:400;
+  letter-spacing:1px;
+}
+
+.goal-cell{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:16px;
+}
+
+.goal-icon{
+  width:48px;
+  height:48px;
+  display:grid;
+  place-items:center;
+  flex:0 0 auto;
+  border-radius:50%;
+  font-size:25px;
+  background:#ffe8ef;
+}
+
+.goal-name{
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:1.5px;
+}
+
+.goal-note{
+  display:block;
+  margin-top:6px;
+  color:var(--pink);
+  font-family:Georgia,serif;
+  font-style:italic;
+  font-weight:400;
+  letter-spacing:0;
+}
+
+.week-cell{
+  padding:12px;
+  vertical-align:top;
+}
+
+.week-days{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:5px;
+}
+
+.day-labels{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:5px;
+  margin-bottom:6px;
+  text-align:center;
+  color:#75565e;
+  font-size:9px;
+}
+
+.day-check{
+  width:23px;
+  height:23px;
+  display:grid;
+  place-items:center;
+  justify-self:center;
+  border:1.5px solid #dc8ca3;
+  border-radius:50%;
+  color:white;
+  background:#fff;
+  cursor:pointer;
+  transition:.18s ease;
+}
+
+.day-check:hover{
+  transform:scale(1.08);
+}
+
+.day-check.done{
+  border-color:var(--pink);
+  background:var(--pink);
+}
+
+.day-check.done::after{
+  content:"✓";
+  font-size:13px;
+  font-weight:700;
+}
+
+.week-progress{
+  margin-top:10px;
+}
+
+.week-progress-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  color:#6d5057;
+  font-size:11px;
+}
+
+.progress-track{
+  height:7px;
+  margin-top:6px;
+  overflow:hidden;
+  border-radius:999px;
+  background:#f6dce4;
+}
+
+.progress-fill{
+  width:0;
+  height:100%;
+  border-radius:inherit;
+  background:linear-gradient(90deg,#df6889,#f49bb3);
+  transition:width .2s ease;
+}
+
+.number-entry{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:7px;
+  align-items:center;
+  margin-top:5px;
+}
+
+.number-entry input{
+  width:100%;
+  border:1px solid var(--line);
+  border-radius:9px;
+  padding:8px;
+  color:#64464e;
+  background:#fffafd;
+  outline:0;
+}
+
+.number-entry span{
+  color:#a56677;
+  font-size:11px;
+}
+
+.week-complete{
+  width:100%;
+  margin-top:10px;
+  padding:8px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  color:#a45c72;
+  background:#fff5f8;
+  cursor:pointer;
+}
+
+.week-complete.active{
+  color:white;
+  border-color:var(--pink);
+  background:var(--pink);
+}
+
+.month-cell{
+  padding:13px;
+  text-align:center;
+  vertical-align:middle;
+}
+
+.month-check{
+  width:34px;
+  height:34px;
+  display:grid;
+  place-items:center;
+  margin:0 auto 8px;
+  border:1.5px solid #d994a8;
+  border-radius:50%;
+  color:#fff;
+  background:#fff;
+}
+
+.month-check.done{
+  border-color:var(--pink);
+  background:var(--pink);
+}
+
+.month-check.done::after{
+  content:"✓";
+  font-weight:700;
+}
+
+.month-result{
+  font-size:12px;
+  line-height:1.5;
+}
+
+.month-percent{
+  margin-top:5px;
+  color:var(--pink);
+  font-size:15px;
+  font-weight:700;
+}
+
+.bottom{
+  display:grid;
+  grid-template-columns:.9fr 1.3fr .55fr .65fr;
+  gap:14px;
+  margin-top:15px;
+}
+
+.reminders,
+.week-reflection,
+.legend,
+.final-note{
+  padding:16px;
+}
+
+.bottom-title{
+  margin-bottom:10px;
+  color:var(--pink);
+  font-size:12px;
+  letter-spacing:2px;
+}
+
+.reminders ul{
+  padding-left:19px;
+  line-height:1.7;
+  font-size:12px;
+}
+
+.week-reflection textarea{
+  width:100%;
+  min-height:80px;
+  padding:10px;
+  border:0;
+  border-bottom:1px solid var(--line);
+  resize:vertical;
+  outline:0;
+  color:#72525b;
+  font-family:Georgia,serif;
+  font-style:italic;
+  background:transparent;
+}
+
+.legend-item{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  margin:9px 0;
+  font-size:12px;
+}
+
+.legend-circle{
+  width:17px;
+  height:17px;
+  border:1px solid #d994a8;
+  border-radius:50%;
+}
+
+.legend-circle.complete{
+  border-color:var(--pink);
+  background:var(--pink);
+}
+
+.legend-circle.progress{
+  background:linear-gradient(90deg,var(--pink) 50%,#fff 50%);
+}
+
+.final-note{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:#72525b;
+  font-family:Georgia,serif;
+  font-style:italic;
+  line-height:1.6;
+  background:#fff0f4;
+}
+
+.actions{
+  display:flex;
+  justify-content:flex-end;
+  margin-top:15px;
+}
+
+.reset-button{
+  padding:10px 17px;
+  border:1px solid rgba(173,78,105,.32);
+  border-radius:999px;
+  color:#ad526b;
+  background:#fff4f7;
+  cursor:pointer;
+}
+
+.reset-button:hover{
+  background:#ffe3eb;
+}
+
+.saved-note{
+  margin-top:10px;
+  text-align:center;
+  color:#a87885;
+  font-size:11px;
+}
+
+@media(max-width:1050px){
+  .top{
+    grid-template-columns:1fr;
+  }
+
+  .overall-card{
+    grid-template-columns:160px 1fr;
+  }
+
+  .vision{
+    grid-column:1 / -1;
+  }
+
+  .bottom{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media(max-width:650px){
+  body{
+    padding:7px;
+  }
+
+  .scorecard{
+    padding:14px;
+  }
+
+  h1{
+    font-size:40px;
+  }
+
+  .overall-card{
+    grid-template-columns:1fr;
+  }
+
+  .overall-ring{
+    margin:auto;
+  }
+
+  .bottom{
+    grid-template-columns:1fr;
+  }
 }
 </style>
 </head>
 
 <body>
-<div class="content">
-  <div class="title">♡ JULY GOALS</div>
-  <div class="subtitle">DISCIPLINE • CONSISTENCY • GROWTH</div>
 
-  <div class="goal-section">
-    <h2>🌸 Health</h2>
-    <div class="goal">☐ Lose 5 pounds this month</div>
-    <div class="goal">☐ Exercise 5 days a week</div>
+<div class="scorecard">
+
+  <section class="top">
+
+    <div class="title-area">
+      <h1>JULY SCORE CARD <span class="heart">♡</span></h1>
+
+      <div class="tagline">
+        FOCUS · DISCIPLINE · CONSISTENCY · FREEDOM
+      </div>
+
+      <div class="quote-card">
+        “Discipline today, freedom tomorrow. ♡”
+      </div>
+    </div>
+
+    <div class="overall-card">
+
+      <div class="overall-ring" id="overallRing">
+        <div class="ring-content">
+          <span class="ring-number" id="overallPercent">0%</span>
+          <span class="ring-label">COMPLETE</span>
+        </div>
+      </div>
+
+      <div class="overall-details">
+        <h2>OVERALL JULY GOALS</h2>
+
+        <div class="stat-line">
+          <small>Goals completed</small>
+          <strong id="goalsComplete">0 / 5</strong>
+        </div>
+
+        <div class="stat-line">
+          <small>Overall progress</small>
+          <strong id="overallText">0%</strong>
+        </div>
+      </div>
+
+      <div class="vision">
+        <div class="vision-title">MONTHLY VISION</div>
+        <textarea id="monthlyVision">The habits I build this month will change my whole life. ♡</textarea>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>HABITS &amp; GOALS</th>
+
+          <th>
+            WEEK 1
+            <span class="week-date">JUN 30 – JUL 6</span>
+          </th>
+
+          <th>
+            WEEK 2
+            <span class="week-date">JUL 7 – JUL 13</span>
+          </th>
+
+          <th>
+            WEEK 3
+            <span class="week-date">JUL 14 – JUL 20</span>
+          </th>
+
+          <th>
+            WEEK 4
+            <span class="week-date">JUL 21 – JUL 27</span>
+          </th>
+
+          <th>
+            WEEK 5
+            <span class="week-date">JUL 28 – JUL 31</span>
+          </th>
+
+          <th>JULY GOAL</th>
+        </tr>
+      </thead>
+
+      <tbody id="goalRows"></tbody>
+    </table>
   </div>
 
-  <div class="goal-section">
-    <h2>📚 LSAT</h2>
-    <div class="goal">☐ Study 10 hours a week</div>
+  <section class="bottom">
+
+    <div class="reminders">
+      <div class="bottom-title">JULY REMINDERS</div>
+
+      <ul>
+        <li>Progress, not perfection.</li>
+        <li>Small daily choices create big changes.</li>
+        <li>Keep showing up for yourself.</li>
+      </ul>
+    </div>
+
+    <div class="week-reflection">
+      <div class="bottom-title">WEEKLY REFLECTION</div>
+
+      <textarea
+        id="weeklyReflection"
+        placeholder="This week, I’m proud of..."
+      ></textarea>
+    </div>
+
+    <div class="legend">
+      <div class="bottom-title">LEGEND</div>
+
+      <div class="legend-item">
+        <span class="legend-circle complete"></span>
+        Completed
+      </div>
+
+      <div class="legend-item">
+        <span class="legend-circle progress"></span>
+        In progress
+      </div>
+
+      <div class="legend-item">
+        <span class="legend-circle"></span>
+        Not started
+      </div>
+    </div>
+
+    <div class="final-note">
+      You are becoming everything you prayed for. ♡
+    </div>
+
+  </section>
+
+  <div class="actions">
+    <button class="reset-button" id="resetScorecard">
+      Reset July Scorecard
+    </button>
   </div>
 
-  <div class="goal-section">
-    <h2>💰 Finance</h2>
-    <div class="goal">☐ Save $1,500 this month</div>
+  <div class="saved-note">
+    🔒 Your July progress saves automatically and remains after refreshing.
   </div>
 
-  <div class="goal-section">
-    <h2>💼 Career</h2>
-    <div class="goal">☐ Start taking leads for insurance</div>
-  </div>
-
-  <div class="progress-title">♡ Monthly Progress</div>
-  <div class="bar"><div class="fill"></div></div>
 </div>
+
+<script>
+const STORAGE_KEY = "kim-july-scorecard-v1";
+
+const WEEK_DAYS = [
+  ["M","T","W","T","F","S","S"],
+  ["M","T","W","T","F","S","S"],
+  ["M","T","W","T","F","S","S"],
+  ["M","T","W","T","F","S","S"],
+  ["M","T","W","T"]
+];
+
+const GOALS = [
+  {
+    id:"lsat",
+    icon:"📖",
+    name:"LSAT STUDY",
+    note:"Study 10 hours each week",
+    type:"number",
+    unit:"hours",
+    weeklyTarget:10,
+    monthlyTarget:40
+  },
+  {
+    id:"money",
+    icon:"💰",
+    name:"SAVE MONEY",
+    note:"Save $1,000",
+    type:"number",
+    unit:"dollars",
+    weeklyTarget:250,
+    monthlyTarget:1000
+  },
+  {
+    id:"clean",
+    icon:"🚭",
+    name:"NO SMOKING / HOOKAH / LIQUOR / WEED",
+    note:"Stay clean",
+    type:"days",
+    monthlyTarget:31
+  },
+  {
+    id:"school",
+    icon:"🛒",
+    name:"ISAIAH SCHOOL SUPPLIES",
+    note:"Have everything ready by Aug 1",
+    type:"weekly",
+    monthlyTarget:5
+  },
+  {
+    id:"fastfood",
+    icon:"🍴",
+    name:"NO FAST FOOD",
+    note:"Eat clean",
+    type:"days",
+    monthlyTarget:31
+  }
+];
+
+function emptyState(){
+  const goals = {};
+
+  GOALS.forEach(goal=>{
+    goals[goal.id] = {
+      weeks: WEEK_DAYS.map(days=>{
+        if(goal.type === "days"){
+          return {
+            checks:days.map(()=>false)
+          };
+        }
+
+        if(goal.type === "weekly"){
+          return {
+            completed:false
+          };
+        }
+
+        return {
+          value:""
+        };
+      })
+    };
+  });
+
+  return {
+    vision:"The habits I build this month will change my whole life. ♡",
+    reflection:"",
+    goals
+  };
+}
+
+let state = emptyState();
+
+function render(){
+  const tbody = document.getElementById("goalRows");
+  tbody.innerHTML = "";
+
+  GOALS.forEach(goal=>{
+    const row = document.createElement("tr");
+
+    const goalTd = document.createElement("td");
+    goalTd.innerHTML = `
+      <div class="goal-cell">
+        <div class="goal-icon">${goal.icon}</div>
+
+        <div>
+          <div class="goal-name">${goal.name}</div>
+          <span class="goal-note">${goal.note}</span>
+        </div>
+      </div>
+    `;
+
+    row.appendChild(goalTd);
+
+    goal.weeks = state.goals[goal.id].weeks;
+
+    WEEK_DAYS.forEach((days,weekIndex)=>{
+      const td = document.createElement("td");
+      td.className = "week-cell";
+
+      if(goal.type === "days"){
+        td.appendChild(
+          renderDayWeek(goal,weekIndex,days)
+        );
+      }
+
+      if(goal.type === "number"){
+        td.appendChild(
+          renderNumberWeek(goal,weekIndex)
+        );
+      }
+
+      if(goal.type === "weekly"){
+        td.appendChild(
+          renderWeeklyCheck(goal,weekIndex)
+        );
+      }
+
+      row.appendChild(td);
+    });
+
+    const monthTd = document.createElement("td");
+    monthTd.className = "month-cell";
+    monthTd.id = `month-${goal.id}`;
+
+    row.appendChild(monthTd);
+    tbody.appendChild(row);
+  });
+
+  updateAllProgress();
+}
+
+function renderDayWeek(goal,weekIndex,days){
+  const container = document.createElement("div");
+  const week = state.goals[goal.id].weeks[weekIndex];
+
+  container.innerHTML = `
+    <div class="day-labels">
+      ${days.map(day=>`<span>${day}</span>`).join("")}
+    </div>
+
+    <div class="week-days"></div>
+
+    <div class="week-progress">
+      <div class="week-progress-row">
+        <span id="${goal.id}-${weekIndex}-text">0%</span>
+        <span id="${goal.id}-${weekIndex}-count">0 / ${days.length}</span>
+      </div>
+
+      <div class="progress-track">
+        <div
+          class="progress-fill"
+          id="${goal.id}-${weekIndex}-fill"
+        ></div>
+      </div>
+    </div>
+  `;
+
+  const checks = container.querySelector(".week-days");
+
+  days.forEach((day,index)=>{
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "day-check";
+
+    if(week.checks[index]){
+      button.classList.add("done");
+    }
+
+    button.addEventListener("click",()=>{
+      week.checks[index] = !week.checks[index];
+      button.classList.toggle("done",week.checks[index]);
+
+      updateAllProgress();
+      save();
+    });
+
+    checks.appendChild(button);
+  });
+
+  return container;
+}
+
+function renderNumberWeek(goal,weekIndex){
+  const container = document.createElement("div");
+  const week = state.goals[goal.id].weeks[weekIndex];
+
+  const symbol =
+    goal.unit === "dollars"
+      ? "$"
+      : "";
+
+  container.innerHTML = `
+    <div class="number-entry">
+      <input
+        type="number"
+        min="0"
+        step="${goal.unit === "hours" ? "0.5" : "1"}"
+        value="${week.value}"
+        placeholder="0"
+      >
+
+      <span>
+        ${symbol}${goal.weeklyTarget}
+        ${goal.unit === "hours" ? "hrs" : "goal"}
+      </span>
+    </div>
+
+    <div class="week-progress">
+      <div class="week-progress-row">
+        <span id="${goal.id}-${weekIndex}-text">0%</span>
+
+        <span>
+          Weekly target:
+          ${symbol}${goal.weeklyTarget}
+        </span>
+      </div>
+
+      <div class="progress-track">
+        <div
+          class="progress-fill"
+          id="${goal.id}-${weekIndex}-fill"
+        ></div>
+      </div>
+    </div>
+  `;
+
+  const input = container.querySelector("input");
+
+  input.addEventListener("input",()=>{
+    week.value = input.value;
+
+    updateAllProgress();
+    save();
+  });
+
+  return container;
+}
+
+function renderWeeklyCheck(goal,weekIndex){
+  const container = document.createElement("div");
+  const week = state.goals[goal.id].weeks[weekIndex];
+
+  container.innerHTML = `
+    <button
+      type="button"
+      class="week-complete ${week.completed ? "active" : ""}"
+    >
+      ${week.completed ? "✓ Week Complete" : "Check Off Week"}
+    </button>
+
+    <div class="week-progress">
+      <div class="week-progress-row">
+        <span id="${goal.id}-${weekIndex}-text">
+          ${week.completed ? "100%" : "0%"}
+        </span>
+
+        <span>
+          ${week.completed ? "Completed" : "Not completed"}
+        </span>
+      </div>
+
+      <div class="progress-track">
+        <div
+          class="progress-fill"
+          id="${goal.id}-${weekIndex}-fill"
+          style="width:${week.completed ? 100 : 0}%"
+        ></div>
+      </div>
+    </div>
+  `;
+
+  const button = container.querySelector(".week-complete");
+
+  button.addEventListener("click",()=>{
+    week.completed = !week.completed;
+
+    button.classList.toggle("active",week.completed);
+
+    button.textContent =
+      week.completed
+        ? "✓ Week Complete"
+        : "Check Off Week";
+
+    updateAllProgress();
+    save();
+  });
+
+  return container;
+}
+
+function numberValue(value){
+  const number = Number(value);
+  return Number.isFinite(number) ? number : 0;
+}
+
+function goalProgress(goal){
+  if(goal.type === "days"){
+    const completed =
+      state.goals[goal.id].weeks
+        .flatMap(week=>week.checks)
+        .filter(Boolean)
+        .length;
+
+    return {
+      completed,
+      target:goal.monthlyTarget,
+      percent:Math.min(
+        Math.round((completed / goal.monthlyTarget) * 100),
+        100
+      ),
+      label:`${completed} / ${goal.monthlyTarget} DAYS`
+    };
+  }
+
+  if(goal.type === "weekly"){
+    const completed =
+      state.goals[goal.id].weeks
+        .filter(week=>week.completed)
+        .length;
+
+    return {
+      completed,
+      target:goal.monthlyTarget,
+      percent:Math.min(
+        Math.round((completed / goal.monthlyTarget) * 100),
+        100
+      ),
+      label:
+        completed === goal.monthlyTarget
+          ? "COMPLETE"
+          : `${completed} / ${goal.monthlyTarget} WEEKS`
+    };
+  }
+
+  const completed =
+    state.goals[goal.id].weeks.reduce(
+      (sum,week)=>sum + numberValue(week.value),
+      0
+    );
+
+  const prefix =
+    goal.unit === "dollars"
+      ? "$"
+      : "";
+
+  const suffix =
+    goal.unit === "hours"
+      ? " HOURS"
+      : "";
+
+  return {
+    completed,
+    target:goal.monthlyTarget,
+    percent:Math.min(
+      Math.round((completed / goal.monthlyTarget) * 100),
+      100
+    ),
+    label:
+      `${prefix}${completed} / ` +
+      `${prefix}${goal.monthlyTarget}${suffix}`
+  };
+}
+
+function updateAllProgress(){
+  let totalPercent = 0;
+  let completedGoals = 0;
+
+  GOALS.forEach(goal=>{
+    state.goals[goal.id].weeks.forEach((week,weekIndex)=>{
+      let percent = 0;
+      let countText = "";
+
+      if(goal.type === "days"){
+        const complete = week.checks.filter(Boolean).length;
+        const target = week.checks.length;
+
+        percent = target
+          ? Math.round((complete / target) * 100)
+          : 0;
+
+        countText = `${complete} / ${target}`;
+
+        const countElement =
+          document.getElementById(
+            `${goal.id}-${weekIndex}-count`
+          );
+
+        if(countElement){
+          countElement.textContent = countText;
+        }
+      }
+
+      if(goal.type === "number"){
+        percent = Math.min(
+          Math.round(
+            (
+              numberValue(week.value) /
+              goal.weeklyTarget
+            ) * 100
+          ),
+          100
+        );
+      }
+
+      if(goal.type === "weekly"){
+        percent = week.completed ? 100 : 0;
+      }
+
+      const text =
+        document.getElementById(
+          `${goal.id}-${weekIndex}-text`
+        );
+
+      const fill =
+        document.getElementById(
+          `${goal.id}-${weekIndex}-fill`
+        );
+
+      if(text){
+        text.textContent = percent + "%";
+      }
+
+      if(fill){
+        fill.style.width = percent + "%";
+      }
+    });
+
+    const month = goalProgress(goal);
+
+    totalPercent += month.percent;
+
+    if(month.percent >= 100){
+      completedGoals++;
+    }
+
+    const monthCell =
+      document.getElementById(`month-${goal.id}`);
+
+    monthCell.innerHTML = `
+      <div class="month-check ${month.percent >= 100 ? "done" : ""}"></div>
+
+      <div class="month-result">
+        ${month.label}
+      </div>
+
+      <div class="month-percent">
+        ${month.percent}%
+      </div>
+    `;
+  });
+
+  const overall =
+    Math.round(totalPercent / GOALS.length);
+
+  document.getElementById("overallPercent")
+    .textContent = overall + "%";
+
+  document.getElementById("overallText")
+    .textContent = overall + "%";
+
+  document.getElementById("goalsComplete")
+    .textContent =
+      completedGoals + " / " + GOALS.length;
+
+  document.getElementById("overallRing")
+    .style
+    .setProperty("--value",overall);
+}
+
+function save(){
+  state.vision =
+    document.getElementById("monthlyVision").value;
+
+  state.reflection =
+    document.getElementById("weeklyReflection").value;
+
+  localStorage.setItem(
+    STORAGE_KEY,
+    JSON.stringify(state)
+  );
+}
+
+function load(){
+  const saved =
+    localStorage.getItem(STORAGE_KEY);
+
+  if(saved){
+    try{
+      const parsed = JSON.parse(saved);
+      const fresh = emptyState();
+
+      state = {
+        ...fresh,
+        ...parsed,
+        goals:{
+          ...fresh.goals,
+          ...(parsed.goals || {})
+        }
+      };
+    }catch(error){
+      state = emptyState();
+    }
+  }
+
+  document.getElementById("monthlyVision")
+    .value = state.vision || "";
+
+  document.getElementById("weeklyReflection")
+    .value = state.reflection || "";
+
+  render();
+}
+
+document
+  .getElementById("monthlyVision")
+  .addEventListener("input",save);
+
+document
+  .getElementById("weeklyReflection")
+  .addEventListener("input",save);
+
+document
+  .getElementById("resetScorecard")
+  .addEventListener("click",()=>{
+    const confirmed = window.confirm(
+      "Delete all saved July Scorecard progress and start fresh?"
+    );
+
+    if(!confirmed){
+      return;
+    }
+
+    localStorage.removeItem(STORAGE_KEY);
+    state = emptyState();
+
+    document.getElementById("monthlyVision")
+      .value = state.vision;
+
+    document.getElementById("weeklyReflection")
+      .value = "";
+
+    render();
+  });
+
+load();
+</script>
+
 </body>
 </html>
